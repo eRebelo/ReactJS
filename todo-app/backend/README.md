@@ -1,7 +1,5 @@
 # Quick Start
 
-----------
-
 ## Dependências
 - Instalar nodeJS com NPM: https://nodejs.org/en/download/
 <br>Versão: **node -v** 
