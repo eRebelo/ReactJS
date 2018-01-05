@@ -4,16 +4,20 @@
 - Instalar nodeJS com NPM: https://nodejs.org/en/download/
 <br>Versão: **node -v** 
 <br>Versão: **npm  -v**
-- Instalar create-react-app
-- Adcionar node_modules
+- Adicionar dependências (node_modules)
+<br>**npm install**
+
+----------
+
+## Criação da Aplicação
+- create-react-app name_my_app
 - npm i --save-dev bootstrap@3.3.7 font-awesome@4.7.0
 - npm install --save-dev  react-router axios@0.15.3
 
 ----------
 
 ## Executar Aplicação
-- Terminal 1: mongod
-- Terminal 2: npm run dev
+- npm start
 
 ----------
 
