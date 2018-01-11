@@ -15,9 +15,9 @@
 ----------
 
 ## Criar Aplicação
-- create-react-app name_my_app
-- npm i --save-dev bootstrap@3.3.7 font-awesome@4.7.0
-- npm install --save-dev  react-router axios@0.15.3
+- **create-react-app name_my_app**
+- **npm i --save bootstrap font-awesome**
+- **npm install --save react-router axios**
 - [Sass](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md#adding-a-css-preprocessor-sass-less-etc)
 
 ----------
