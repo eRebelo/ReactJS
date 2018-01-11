@@ -27,9 +27,8 @@ Middleware Redux é utilizado para log, relatórios de falhas, conversando com u
 - Redux-Promise: utilizado para que um fluxo assíncrono espere a chamada de uma determinada operação para continuar sua execução nas Action Creators. Em suma, faz com que o Reducer só seja chamado após o término das operações das Action Creators
 <br> **npm install --save redux-promise**
 - Redux-Multi: permite a chamada de múltiplas operações nas Action Creators
-<br>**npm install --save redux-multi
-- Redux-Thunk
-Complemento do Redux-Multi, o Redux-Thunk permite escrever Action Creators que retornam uma função em vez de uma ação. Assim, ele pode ser usado para atrasar o envio de uma ação, ou para despachar somente se uma determinada condição for atendida.
+<br>**npm install --save redux-multi**
+- Redux-Thunk: complemento do Redux-Multi, o Redux-Thunk permite escrever Action Creators que retornam uma função em vez de uma ação. Assim, ele pode ser usado para atrasar o envio de uma ação, ou para despachar somente se uma determinada condição for atendida
 <br>**npm install --save redux-thunk**
 
 ----------
