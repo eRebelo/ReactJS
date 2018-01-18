@@ -1,6 +1,5 @@
 import axios from 'axios'
-
-const URL = 'http://localhost:3003/api/todos'
+import consts from '../consts'
 
 export const changeDescription = event => ({
     type: 'DESCRIPTION_CHANGED',
@@ -11,14 +10,14 @@ export const search = () => {
     return (dispatch, getState) => {
         const description = getState().todo.description
         const search = description ? `&description__regex=/${description}/` : ''
-        const request = axios.get(`${URL}?sort=-createdAt${search}`)
+        const request = axios.get(`${consts.API_URL}/todos?sort=-createdAt${search}`)
             .then(resp => dispatch({ type: 'TODO_SEARCHED', payload: resp.data }))
     }
 }
 
 export const add = (description) => {
     return dispatch => {
-        axios.post(URL, { description })
+        axios.post(`${consts.API_URL}/todos`, { description })
             .then(resp => dispatch(clear()))
             .then(resp => dispatch(search()))
     }
@@ -26,21 +25,21 @@ export const add = (description) => {
 
 export const markAsDone = (todo) => {
     return dispatch => {
-        axios.put(`${URL}/${todo._id}`, { ...todo, done: true })
+        axios.put(`${consts.API_URL}/todos/${todo._id}`, { ...todo, done: true })
             .then(resp => dispatch(search()))
     }
 }
 
 export const markAsPending = (todo) => {
     return dispatch => {
-        axios.put(`${URL}/${todo._id}`, { ...todo, done: false })
+        axios.put(`${consts.API_URL}/todos/${todo._id}`, { ...todo, done: false })
             .then(resp => dispatch(search()))
     }
 }
 
 export const remove = (todo) => {
     return dispatch => {
-        axios.delete(`${URL}/${todo._id}`)
+        axios.delete(`${consts.API_URL}/todos/${todo._id}`)
             .then(resp => dispatch(search()))
     }
 }
