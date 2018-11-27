@@ -7,6 +7,12 @@ import { getEquipmentList, addEquipment, editInitEquipment, editEquipment, remov
 import FormModal from './modal/formModal'
 import DialogModal from './modal/dialogModal'
 
+const mySelectTypes = [
+    { value: 'CPE', text: 'CPE' },
+    { value: 'ROUTER', text: 'Roteador' },
+    { value: 'SWITCH', text: 'Switch' }
+]
+
 class EquipmentList extends Component {
     constructor(props) {
         super(props)
@@ -31,6 +37,16 @@ class EquipmentList extends Component {
         this.closeModalRemove = this.closeModalRemove.bind(this)
     }
 
+    matchTypeString(typeParam) {
+        var response = '';
+        for (let j = 0; j < mySelectTypes.length; j++) {
+            if (mySelectTypes[j].value === typeParam) {
+                response = mySelectTypes[j].text;
+            }
+        }
+        return response;
+    }
+
     /* Component of Lifecycle 'React' is called in component exhibition */
     componentWillMount() {
         this.props.getEquipmentList();
@@ -39,6 +55,9 @@ class EquipmentList extends Component {
     /* Open modal add equipment */
     openModalAdd() {
         this.setState({ showFormModalAdd: true });
+
+        /* Remove the line below if you don't want to initialize the modal form */
+        this.props.cleanForm();
     }
 
     /* Close modal add equipment */
@@ -75,7 +94,7 @@ class EquipmentList extends Component {
             const list = this.props.list || []
             return list.map(equipment => (
                 <tr key={equipment._id}>
-                    <td>{equipment.type}</td>
+                    <td>{this.matchTypeString(equipment.type)}</td>
                     <td>{equipment.hostname}</td>
                     <td>{equipment.ip_address}</td>
                     <td>{equipment.location}</td>

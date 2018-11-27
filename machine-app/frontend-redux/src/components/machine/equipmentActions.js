@@ -3,7 +3,11 @@ import { toastr } from 'react-redux-toastr'
 import { reset as resetForm, initialize } from 'redux-form'
 import consts from '../../consts'
 
-const INITIAL_VALUE = {}
+const INITIAL_VALUE = {
+    create_date: '27/11/2018',
+    change_date: '27/11/2018',
+    change_by: 'Admin'
+}
 
 export const loading = () => {
     return {
