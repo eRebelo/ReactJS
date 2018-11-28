@@ -5,9 +5,9 @@ import { Popover, Collapse } from 'react-bootstrap'
 
 const required = value => value ? undefined : 'Campo obrigatório';
 
-const renderTextField = ({ input, label, type, meta: { touched, error }, ...rest }) => (
+const renderTextField = ({ input, label, type, placeholder, meta: { touched, error }, ...rest }) => (
     <div>
-        <input {...input} {...rest} placeholder={label} type={type} className={'form-control ' + (touched && error ? 'error-input' : '')} />
+        <input {...input} {...rest} label={label} type={type} placeholder={placeholder} className={'form-control ' + (touched && error ? 'error-input' : '')} />
         {touched && (error && <Popover id='popover-error' placement='top'>{error}</Popover>)}
     </div>
 );
@@ -31,7 +31,7 @@ class FormModal extends Component {
             showModal: true,
             errors: false,
             openToogle: true,
-            mySelectTypes: []
+            /* mySelectTypes: [] */
         }
 
         this.keyHandler = this.keyHandler.bind(this)
@@ -64,13 +64,19 @@ class FormModal extends Component {
     }
 
     selectOptions = () => {
-        this.setState({
+        // There are two forms to initialize a select types
+        /* this.setState({
             mySelectTypes: [
                 { value: 'CPE', text: 'CPE' },
                 { value: 'ROUTER', text: 'Roteador' },
                 { value: 'SWITCH', text: 'Switch' }
             ]
-        });
+        }); */
+        this.mySelectTypes = [
+            { value: 'CPE', text: 'CPE' },
+            { value: 'ROUTER', text: 'Roteador' },
+            { value: 'SWITCH', text: 'Switch' }
+        ];
     }
 
     confirmAction() {
@@ -127,7 +133,8 @@ class FormModal extends Component {
                                             {/* <option value='CPE'>CPE</option>
                                             <option value='ROUTER'>Roteador</option>
                                             <option value='SWITCH'>Switch</option> */}
-                                            {this.state.mySelectTypes.map((e, key) => {
+                                            {/* this.state.mySelectTypes.map((e, key) => {*/}
+                                            {this.mySelectTypes.map((e, key) => {
                                                 return <option key={key} value={e.value}>{e.text}</option>;
                                             })}
                                         </Field>
@@ -172,11 +179,11 @@ class FormModal extends Component {
                                     </div>
                                 </div>
 
-                                <div className="row">
-                                    <div className="col-md-12 col-lg-12">
-                                        <h4 className="heading">Histórico
-                                            <div className="btn btn-default pull-right history-button" onClick={() => this.setState({ openToogle: !this.state.openToogle })}>
-                                                {this.state.openToogle ? (<span className="fa fa-chevron-up"></span>) : <span className="fa fa-chevron-down"></span>}
+                                <div className='row'>
+                                    <div className='col-md-12 col-lg-12'>
+                                        <h4 className='heading'>Histórico
+                                            <div className='btn btn-default pull-right history-button' onClick={() => this.setState({ openToogle: !this.state.openToogle })}>
+                                                {this.state.openToogle ? (<span className='fa fa-chevron-up'></span>) : <span className='fa fa-chevron-down'></span>}
                                             </div>
                                         </h4>
                                     </div>
